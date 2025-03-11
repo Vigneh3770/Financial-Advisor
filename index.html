@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Advisor</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        h1, h2 {
+            color: #004a8f;
+        }
+
+        /* Container to center the page content */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        /* Header with Navigation */
+        header {
+            background-color: #004a8f;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #0073e6;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        section p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Chatbot Section */
+        #chatbot-section {
+            margin-top: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        #chatbot-section h2 {
+            color: #333;
+        }
+
+        #chat-form {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #user-input {
+            padding: 10px;
+            width: 80%;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #chatbot-section button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            background-color: #004a8f;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #chatbot-section button:hover {
+            background-color: #0073e6;
+        }
+
+        #chatbot-response {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Welcome to the Financial Advisor Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('sip_calculator') }}">SIP Calculator</a></li>
+                    <li><a href="{{ url_for('loan_calculator') }}">Loan Repayment Calculator</a></li>
+                    <li><a href="{{ url_for('chatbot') }}">Chatbot</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="home">
+            <h2>Financial Tools</h2>
+            <p>Access various tools and get personalized financial advice.</p>
+        </section>
+
+        <!-- Chatbot form -->
+        <div id="chatbot-section" style="display:none;">
+            <h2>Chatbot</h2>
+            <form id="chat-form">
+                <input type="text" id="user-input" name="message" placeholder="Ask me anything..." required>
+                <button type="submit">Send</button>
+            </form>
+
+            <div id="chatbot-response"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
